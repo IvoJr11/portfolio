@@ -1,0 +1,29 @@
+---
+import SocialPill from "./SocialPill.astro";
+---
+
+<main class="w-full mx-auto lg:w-[740px] py-44">
+  <div class="flex">
+    <img src="../assets/astro.svg" width="100" height="100" /> 
+    <div class="flex flex-col ">
+      <h1 class="text-5xl font-bold pb-6 text-white">Bienvenido, soy Ivo</h1>
+      <h2 class="text-xl text-wrap opacity-80">+500h en desarrollo web. E-commerces, aplicaciones, APIs. <span class="text-yellow-200/90">Desarrollador Fullstack</span> desde Cipolletti, Argentina 🇦🇷.
+        <span class="text-indigo-200/90">Amante de innovar y aprender nuevas tecnologías.</span>
+      </h2>
+    </div>
+  </div>
+  <div class="flex gap-4 mt-10">
+    <SocialPill href="https://www.linkedin.com/in/ivo-pascal-rios/">
+      LinkedIn
+    </SocialPill>
+    <SocialPill href="https://github.com/IvoJr11">
+      Github
+    </SocialPill>
+    <SocialPill href="mailto:pascalivodev@gmail.com">
+      Email
+    </SocialPill>
+  </div>
+</main>
+
+<style>
+</style>
