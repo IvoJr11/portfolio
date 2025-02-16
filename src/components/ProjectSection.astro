@@ -1,0 +1,90 @@
+---
+import type { map } from "astro:schema"
+import JSPill from "./TechPills/JSPill.astro";
+import HTMLPill from "./TechPills/HTMLPill.astro";
+import CSSPill from "./TechPills/CSSPill.astro";
+import BootstrapPill from "./TechPills/BootstrapPill.astro";
+import VuePill from "./TechPills/VuePill.astro";
+import JavaPill from "./TechPills/JavaPill.astro";
+import SpringPill from "./TechPills/SpringPill.astro";
+
+const TAGS = {
+  JS: {
+    name: "JavaScript",
+    class: "bg-[#736400]",
+    icon: JSPill
+  },
+  HTML: {
+    name: "HTML",
+    class: "bg-[#531200]",
+    icon: HTMLPill
+  },
+  CSS: {
+    name: "CSS",
+    class: "bg-[#001671]",
+    icon: CSSPill 
+  },
+  Bootstrap: {
+    name: "Bootstrap",
+    class: "bg-[#2c005b]",
+    icon: BootstrapPill
+  },
+  Vue: {
+    name: "Vue.js",
+    class: "bg-[#004828]",
+    icon: VuePill
+  },
+  Java: {
+    name: "Java",
+    class: "bg-[#002a46]",
+    icon: JavaPill
+  },
+  SpringBoot: {
+    name: "Spring Boot",
+    class: "bg-[#164800]",
+    icon: SpringPill
+  }
+}
+
+const PROJECTS = [
+  {
+    title: "Ecommerce - Anime Store",
+    description: "E-commerce donde los fanes del anime son bienvenidos, pudiendo seleccionar entre sus productos deseados, asegurando la más alta calidad y mejores precios en el mercado.",
+    image: "/projects/origami_so_opt.webp",
+    link: "https://github.com/IvoJr11/MindhubFinalProject/tree/master/eCommerce",
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JS, TAGS.Bootstrap, TAGS.Vue, TAGS.Java, TAGS.SpringBoot]
+  },
+  {
+    title: "Homebanking - Banking App",
+    description: "Aplicación de banco donde el usuario puede realizar transacciones y gestionar sus cuentas, tarjetas, etc.",
+    image: "/projects/homebank_so_opt.webp",
+    link: "https://github.com/IvoJr11/HomeGank/tree/main/Homebanking",
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JS, TAGS.Bootstrap, TAGS.Vue, TAGS.Java, TAGS.SpringBoot]
+  },
+  {
+    title: "PetShop - Frontend",
+    description: "Aplicación web amigable y fácil de usar, donde el usuario puede navegar y comprar productos para sus mascotas, desde ropa, juguetes, peluches, etc.",
+    image: "/projects/petshop_so_opt.webp",
+    link: "https://github.com/IvoJr11/Franco-PetShop",
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JS, TAGS.Bootstrap, TAGS.Vue]
+  }
+]
+---
+
+<>
+  {PROJECTS.map(({ title, description, image, tags }) =>(
+    <article class="flex flex-col mt-10 gap-2">
+      <h3 class="text-2xl font-bold text-indigo-400"> {title}</h3>
+      <ul class="flex flex-row gap-4">
+        {tags.map(tag => (
+          <li class={`flex items-center gap-1 rounded-full px-2 py-1 text-xs text-white font-semibold ${tag.class}`}>
+            <tag.icon class="size-4" />
+            {tag.name}
+          </li>
+        ))}
+      </ul>
+      <p class="opacity-80 text-lg text-pretty">{description}</p>
+      <img src={image} alt={title} class="rounded-xl shadow-xl shadow-[#25252c7c]" />
+    </article>
+  ))}
+</>

@@ -11,7 +11,8 @@ import "../styles/global.css";
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro Basics</title>
 	</head>
-	<body>
+	<body class="relative">
+		<div class="absolute top-0 z-[-2] h-full w-screen bg-[rgb(19,17,2)] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
 		<slot />
 	</body>
 </html>
@@ -22,10 +23,12 @@ import "../styles/global.css";
 	}
 	html {
 		font-family: system-ui, sans-serif;
+		scroll-behavior: smooth;
 	}
 	body {
+		/* background-color: #111113; */
 		display: flex;
 		flex-direction: column;
-		height: 100vh;
+		min-height: 100vh;
 	}
 </style>

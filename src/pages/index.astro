@@ -1,11 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import TopSection from '../components/TopSection.astro';	
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import ProjectSection from '../components/ProjectSection.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import ProjectsIcon from "../components/ProjectsIcon.astro";
 ---
 
 <Layout>
-	<TopSection />
+	<SectionContainer>
+		<TopSection />
+	</SectionContainer>
+	<SectionContainer>
+		<h2 class="text-2xl text-white font-bold flex items-center gap-2">
+			<ProjectsIcon class="size-8" />
+			Proyectos
+		</h2>
+		<ProjectSection />
+	</SectionContainer>
 </Layout>
