@@ -1,0 +1,35 @@
+---
+import ArrowIcon from "./ArrowIcon.astro"
+
+const EXP = [
+  {
+    title: 'Licenciatura en Ciencias de la Computación',
+    dateFrom: '03/2024',
+    dateTo: 'En curso',
+    company: 'Universidad Nacional del Comahue',
+    description: 'Cursando carrera universitaria Licenciatura en Ciencias de la Computación. Terminado el primer año y en curso el segundo.'
+  },
+  {
+    title: 'Bootcamp Fullstack Java Jr',
+    dateFrom: '03/2022',
+    dateTo: '07/2022',
+    company: 'Mindhub LA',
+    description: 'Bootcamp de desarrollo web Fullstack; +500h en proyectos grupales e individuales siguiendo buenas prácticas y metodologías enfocadas en el ámbito profesional (AGILE y SCRUM). Implementación de APIs REST, web responsive, POO, entre otros conceptos.'
+  }
+]
+---
+
+<>
+  {
+    EXP.map(exp => (
+      <article class="flex gap-3 mb-3">
+        <ArrowIcon class="size-6" />
+        <div class="w-fit">
+          <h3 class="text-base font-semibold text-indigo-200">{exp.title} - {exp.company}</h3>
+          <small class="opacity-60">{exp.dateFrom} - {exp.dateTo}</small>
+          <p class="text-base text-balance">{exp.description}</p>
+        </div>
+      </article>
+    ))
+  }
+</>

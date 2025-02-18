@@ -7,6 +7,8 @@ import BootstrapPill from "./TechPills/BootstrapPill.astro";
 import VuePill from "./TechPills/VuePill.astro";
 import JavaPill from "./TechPills/JavaPill.astro";
 import SpringPill from "./TechPills/SpringPill.astro";
+import GithubIcon from "./SocialIcons/GithubIcon.astro";
+import GithubPill from "./SocialIcons/GithubPill.astro";
 
 const TAGS = {
   JS: {
@@ -71,10 +73,15 @@ const PROJECTS = [
 ]
 ---
 
-<>
-  {PROJECTS.map(({ title, description, image, tags }) =>(
-    <article class="flex flex-col mt-10 gap-2">
-      <h3 class="text-2xl font-bold text-indigo-400"> {title}</h3>
+<section class="flex flex-col gap-5">
+  {PROJECTS.map(({ title, description, image, tags, link }) =>(
+    <article class="flex flex-col mt-5 gap-2">
+      <div class="flex flex-row gap-4 items-center justify-between">
+        <h3 class="flex flex-row text-2xl font-bold text-indigo-400">
+          {title}
+        </h3>
+        <GithubPill href={link} />
+      </div>
       <ul class="flex flex-row gap-4">
         {tags.map(tag => (
           <li class={`flex items-center gap-1 rounded-full px-2 py-1 text-xs text-white font-semibold ${tag.class}`}>
@@ -87,4 +94,4 @@ const PROJECTS = [
       <img src={image} alt={title} class="rounded-xl shadow-xl shadow-[#25252c7c]" />
     </article>
   ))}
-</>
+</section>
