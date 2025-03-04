@@ -4,6 +4,9 @@ dist/
 # generated types
 .astro/
 
+#archive
+./src/constants.js
+
 # dependencies
 node_modules/
 
