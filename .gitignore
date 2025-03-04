@@ -5,7 +5,7 @@ dist/
 .astro/
 
 #archive
-./src/constants.js
+src/constants.js
 
 # dependencies
 node_modules/
