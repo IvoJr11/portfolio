@@ -5,81 +5,63 @@ import EmailIcon from "./SocialIcons/EmailIcon.astro";
 import GithubIcon from "./SocialIcons/GithubIcon.astro";
 import LinkedinIcon from "./SocialIcons/LinkedinIcon.astro";
 import SocialPill from "./SocialPill.astro";
+import { REFRESH_TOKEN } from "../constants";
+import { refreshToken, getLastPlayedSong } from "../pages/Spotify.json";
+import SpotifyIcon from "./SocialIcons/SpotifyIcon.astro";
 
-
-
+let response = await refreshToken(REFRESH_TOKEN)
+const res = await getLastPlayedSong(response)
+const LAST_PLAYED_SONG = await res.json()
 ---
 
-<section class="grid grid-cols-4 grid-rows-4 gap-4">
-  <div class="col-span-3 row-span-2 p-8 border border-white/10 shadow-white/2 shadow-xl flex flex-col rounded-lg backdrop-blur-xl bg-gradient-to-tl from-violet-400/30 to-white/10 justify-end">
+<section class="grid grid-cols-10 grid-rows-10 gap-4">
+  <div class="col-span-8 row-span-4 p-8 shadow-white/2 shadow-xl flex flex-col rounded-lg backdrop-blur-xl bg-gradient-to-tl from-[#100E1B] to-white/10 justify-end">
     <h1 class="text-3xl font-bold pb-6 text-white">Bienvenido, soy Ivo</h1>
     <h2 class="text-xl text-wrap opacity-80">+500h en desarrollo web. E-commerces, aplicaciones, APIs. <span class="text-yellow-200/90">Desarrollador Fullstack</span> desde Cipolletti, Argentina 🇦🇷.
       <span class="text-indigo-200/90">Amante de innovar y aprender nuevas cosas cada día.</span>
     </h2>
   </div>
-  <div class="col-span-1 row-span-1 flex items-center justify-center bg-violet-900 rounded-lg">
+  <div class="col-span-2 row-span-2 flex items-center justify-center bg-[#1F1D33] rounded-lg">
     <img src="/images/foto_pres_sq.jpg" class="size-48 p-4 rounded-full" />
   </div>
-  <SocialPill href="https://www.linkedin.com/in/ivo-pascal-rios/" class="col-span-1 row-span-1">
+  <SocialPill href="https://www.linkedin.com/in/ivo-pascal-rios/" class="col-span-2 row-span-2">
     <LinkedinIcon class="size-20" />
   </SocialPill>
   <a class="
-    col-span-2 row-span-2
-    bg-cover
+    col-span-4 row-span-4
+    bg-center
     rounded-lg
   text-white
-    py-3 px-3 opacity-70
-    border
-  border-white/20
-    hover:opacity-100 hover:border-white/50 hover:scale-101
+    py-5 px-5 opacity-70
+    hover:opacity-100 hover:scale-101
     transition-all
     flex flex-col justify-between
-    bg-[url(../../../public/images/Astronaut-Moon.png)]"
+    bg-[url(/images/Art_Scrambling_GIF.gif)]"
     href="https://github.com/IvoJr11"
     target="_blank"
     rel="noopener noreferrer"
   >
     <GithubIcon class="size-8"/>
-    <small class="font-bold text-white/70">Visita todos mis proyectos en mi perfil</small>
+    <p class="text-lg ">Échale un vistazo a mi perfil de Github</p>
   </a>
-  <SocialPill href="mailto:pascalivodev@gmail.com" class="col-span-1 row-span-1">
+  <SocialPill href="mailto:pascalivodev@gmail.com" class="col-span-2 row-span-2">
     <EmailIcon class="size-12" />
   </SocialPill>
-  <SocialPill href="../../public/PascalIvo-CV.pdf" download class="col-span-1 row-span-1">
+  <div class="relative col-span-4 row-span-2 flex flex-col justify-end py-6 px-4 overflow-hidden bg-center rounded-xl text-xl font-bold">  
+    <img src={LAST_PLAYED_SONG.image} alt="" class="absolute opacity-50 top-0 left-0 w-full h-full object-cover -z-10" />
+    <SpotifyIcon class="size-6 absolute top-5 left-5 opacity-50 rotate-5" />
+    <p class="text-lg">Escuchado recientemente:</p>
+    <p class="text-lg">{LAST_PLAYED_SONG.name.toUpperCase()}</p>
+    <small class="text-sm">{LAST_PLAYED_SONG.artist.toUpperCase()}</small>
+  </div>
+  <div class="col-span-4 row-span-2 flex justify-end px-6 py-4 rounded-xl text-xl font-bold bg-[#1F1D33]">
+    <img src="/images/reading-time.svg" class="size-48" id="reading" />
+    <div>
+      <p class="text-right text-lg">En cuestiones de ciencia, la autoridad de miles no vale más que el humilde razonamiento de un único individuo.</p>
+      <p class="text-right text-sm"> ~ Galileo</p>
+    </div>
+  </div>
+  <SocialPill href="../../public/PascalIvo-CV.pdf" download class="col-span-2 row-span-2 bg-[#A82F2F]">
     <PdfIcon class="size-12" />
   </SocialPill>
-  <div class="col-span-2 row-span-1 flex flex-col items-center border-3 border-white px-6 py-4 rounded-xl text-xl font-bold">
-    
-  </div>
 </section>
-<script>
-  const client_id = "be8f2a80eef149b095e1a606f9056080";
-  const redirect_uri = "http://127.0.0.1:3000";
-  const scopes = "user-read-recently-played";
-
-  const auth_url = `https://accounts.spotify.com/authorize
-    ?client_id=${client_id}
-    &response_type=code
-    &redirect_uri=${encodeURIComponent(redirect_uri)}
-    &scope=${encodeURIComponent(scopes)}`;
-  window.location.href = auth_url;
-</script>
-
-<!-- <style>
-  #arrowDown {
-    -webkit-animation: UpToDown 1s infinite alternate;
-    animation: UpToDown 1s infinite alternate;
-  }
-  @-webkit-keyframes UpToDown {
-    0% {
-      transform: translateY(0);
-    }
-    100% {
-      transform: translateY(-5px);
-    }
-  }
-  @keyframes UpToDown {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-5px); }
-  }
-</style> -->

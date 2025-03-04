@@ -1,0 +1,3 @@
+export const CLIENT_ID = "be8f2a80eef149b095e1a606f9056080"
+export const CLIENT_SECRET = "695acbb2dd2d4bd386f1f72931cb1c4e"
+export const REFRESH_TOKEN = "AQCdmYf5yym852PGxKpPfKVercot9XfcJ8Y4iG6I7zkGlfsfwq1y_mFt1qhig_neM0AHRspQIlmjL_k2rjODiqfGG5au5gIP22j2lMJ0ZyAjpcPc1S-ZbCmp0Q6bG3PTyB4"
